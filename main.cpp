@@ -1,30 +1,55 @@
 #include <stdio.h>
+#include <windows.h>
+#include <random>
+#include <time.h>
 
-template <typename T>
-T Min(T a, T b) {
+typedef void(*PFunc)(int*);
 
-	if (a > b) {
-		return static_cast<T>(a);
+//ランダムで値を返す関数
+int random(int a) {
+
+	int num;
+
+	//乱数シード生成器
+	std::random_device seed_gen;
+	//メルセンヌ・ツイスター
+	std::mt19937_64 engine(seed_gen());
+	//乱数範囲
+	std::uniform_real_distribution<int> typeDist(0, 100);
+
+	num = typeDist(engine);
+
+	//奇数、偶数を判断し調整
+
+	if (a % 2 == 0) {
+
+		if (num % 2 != 0) {
+			num++;
+		}
+
 	}
-	else if (b > a) {
-		return static_cast<T>(b);
+	else {
+
+		if (num % 2 != 1) {
+			num++;
+		}
+
 	}
-	
-	return 0;
+
+	return num;
 }
 
-template<>
-char Min<char>(char a, char b) {
-	return printf("数字以外は代入できません\n");;
+void wait(PFunc p, int second) {
+
+	Sleep(second);
+	p(&second);
 }
 
 int main() {
 
-	printf("%d\n",Min<int>(114,514));
-	printf("%f\n", Min<float>(1.14f, 5.14f));
-	printf("%f\n", Min<double>(11.4, 51.4));
-
-	printf("%c\n", Min<char>(1, 2));
+	PFunc p;
+	p = random(100);
+	wait(p,3);
 
 	return 0;
 }
