@@ -1,30 +1,35 @@
 #include <stdio.h>
 
-template <typename T>
-T Min(T a, T b) {
-
-	if (a > b) {
-		return static_cast<T>(a);
-	}
-	else if (b > a) {
-		return static_cast<T>(b);
-	}
-	
-	return 0;
+//通常の賃金体系
+int UsuallySalary(int n) {
+	return (n * 1072);
 }
 
-template<>
-char Min<char>(char a, char b) {
-	return printf("数字以外は代入できません\n");;
+//再帰部分
+int RecursiveSalary(int n) {
+
+	if (n <= 1) {
+		return  1;
+	}
+
+	return (2 * RecursiveSalary(n - 1));
+}
+
+//時給がアップする賃金体系
+int UpSalary(int n) {
+	return (RecursiveSalary(n) * 100) - 50;
 }
 
 int main() {
 
-	printf("%d\n",Min<int>(114,514));
-	printf("%f\n", Min<float>(1.14f, 5.14f));
-	printf("%f\n", Min<double>(11.4, 51.4));
+	int n = 8;
+	int result;
 
-	printf("%c\n", Min<char>(1, 2));
+	result = UsuallySalary(n);
+	printf("%d\n", result);
+
+	result = UpSalary(n);
+	printf("%d\n", result);
 
 	return 0;
 }
