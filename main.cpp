@@ -3,53 +3,47 @@
 #include <random>
 #include <time.h>
 
-typedef void(*PFunc)(int*);
+typedef void (*PFunc)(int num,int input);
 
-//ランダムで値を返す関数
-int random(int a) {
+//判断
+void Judge(int num,int input) {
 
-	int num;
-
-	//乱数シード生成器
-	std::random_device seed_gen;
-	//メルセンヌ・ツイスター
-	std::mt19937_64 engine(seed_gen());
-	//乱数範囲
-	std::uniform_real_distribution<int> typeDist(0, 100);
-
-	num = typeDist(engine);
-
-	//奇数、偶数を判断し調整
-
-	if (a % 2 == 0) {
-
-		if (num % 2 != 0) {
-			num++;
-		}
-
+	if (num % 2 == input) {
+		printf("正解\n");
 	}
 	else {
-
-		if (num % 2 != 1) {
-			num++;
-		}
-
+		printf("不正解\n");
 	}
 
-	return num;
 }
 
-void wait(PFunc p, int second) {
+//停止
+void Wait(PFunc p,int second,int num,int input) {
 
 	Sleep(second);
-	p(&second);
+
+	p(num, input);
+
 }
 
 int main() {
 
+	//ランダム
+	int num;
+	num = rand() % 100;
+
+	//入力
+	printf("0:偶数 1:奇数\n");
+	int input;
+	scanf_s("%d", &input);
+
+	//コールバック関数
 	PFunc p;
-	p = random(100);
-	wait(p,3);
+	p = Judge;
+
+	//3秒停止後に判断
+	printf("判断中\n");
+	Wait(p,3000,num,input);
 
 	return 0;
 }
