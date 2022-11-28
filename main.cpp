@@ -2,23 +2,12 @@
 #include <windows.h>
 #include <random>
 #include <time.h>
+#include <functional>
 
-typedef void (*PFunc)(int num,int input);
-
-//”»’f
-void Judge(int num,int input) {
-
-	if (num % 2 == input) {
-		printf("³‰ğ\n");
-	}
-	else {
-		printf("•s³‰ğ\n");
-	}
-
-}
+typedef void (*PFunc)(int num, int input);
 
 //’â~
-void Wait(PFunc p,int second,int num,int input) {
+void Wait(PFunc p, int second, int num, int input) {
 
 	Sleep(second);
 
@@ -38,12 +27,19 @@ int main() {
 	scanf_s("%d", &input);
 
 	//ƒR[ƒ‹ƒoƒbƒNŠÖ”
-	PFunc p;
-	p = Judge;
+
+	auto p = [=](int num, int input) {
+		if (num % 2 == input) {
+			printf("³‰ğ\n");
+		}
+		else {
+			printf("•s³‰ğ\n");
+		}
+	};
 
 	//3•b’â~Œã‚É”»’f
 	printf("”»’f’†\n");
-	Wait(p,3000,num,input);
+	Wait(p, 3000, num, input);
 
 	return 0;
 }
