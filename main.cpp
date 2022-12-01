@@ -145,7 +145,7 @@ int main() {
 					no++;
 				}
 
-				printf("%d:%d\n", iterator, no - 1);
+				printf("%d:%d\n", iterator, no);
 				printf("}\n");
 				printf("---------------------------------\n");
 				printf("1.—v‘f‚Ì•\Ž¦‚É–ß‚é\n");
