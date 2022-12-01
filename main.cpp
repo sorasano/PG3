@@ -144,12 +144,16 @@ int main() {
 					cell = cell->next;
 					no++;
 				}
-
+				printf("\n");
 				printf("%d:%d\n", iterator, no);
-				printf("}\n");
+				printf("\n");
 				printf("---------------------------------\n");
 				printf("1.要素の表示に戻る\n");
 				printf("2.要素の操作に戻る\n");
+				printf("操作を選択してください\n");
+				scanf_s("%d", &sceneInput);
+				printf("}\n");
+				printf("---------------------------------\n");
 			}
 
 		}
