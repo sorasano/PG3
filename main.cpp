@@ -161,13 +161,13 @@ int main() {
 
 			printf("[リスト要素の挿入]\n");
 
-			printf("要素を追加する場所を指定してください。最後尾に追加する場合は何も入力しないでください。\n");
+			printf("要素を追加する場所を指定してください。最後尾に追加する場合は'0'を入力してください。\n");
 			scanf_s("%d", &iterator);
 
 			printf("追加する要素の値を入力してください\n");
 			scanf_s("%s", inputValue[num], 20);
 
-			if (&iterator != nullptr) {
+			if (iterator != 0) {
 
 				//任意のセルの後ろに追加
 				insertCell = getInsertListAddress(&head, iterator - 1);
@@ -179,7 +179,7 @@ int main() {
 				//入力がない場合
 
 				CELL* endCell = &head;
-				iterator = 0;
+				iterator = 1;
 
 				while (endCell->next != nullptr) {
 					endCell = endCell->next;
