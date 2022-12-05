@@ -5,31 +5,41 @@ int UsuallySalary(int n) {
 	return (n * 1072);
 }
 
-//再帰部分
-int RecursiveSalary(int n) {
+//時給がアップする賃金体系
+int UpSalary(int n, int result) {
 
 	if (n <= 1) {
-		return  1;
+		return  result;
 	}
 
-	return (2 * RecursiveSalary(n - 1));
-}
+	result = result * 2 - 50;
 
-//時給がアップする賃金体系
-int UpSalary(int n) {
-	return (RecursiveSalary(n) * 100) - 50;
+	return UpSalary(n - 1, result);
 }
 
 int main() {
 
-	int n = 8;
+	//労働時間
+	int n = 10;
+	//賃金答え
 	int result;
 
-	result = UsuallySalary(n);
-	printf("%d\n", result);
+	for (int i = 1; i <= n; i++) {
 
-	result = UpSalary(n);
-	printf("%d\n", result);
+		//時間経過
+		printf("%d時間目 : ", i);
+
+		//通常の賃金体系
+		result = UsuallySalary(i);
+		printf("一般的な賃金体系 : %d", result);
+
+		///再帰的な賃金体系の初期値
+		result = 100;
+
+		//再帰的な賃金体系
+		result = UpSalary(i, result);
+		printf("  再帰的な賃金体系 : %d\n", result);
+	}
 
 	return 0;
 }
