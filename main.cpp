@@ -15,6 +15,8 @@ void Judge(int num,int input) {
 		printf("•s³‰ğ\n");
 	}
 
+	printf("o‚½–Ú‚Í'%d'‚Å‚µ‚½\n",num);
+	
 }
 
 //’â~
@@ -30,7 +32,7 @@ int main() {
 
 	//ƒ‰ƒ“ƒ_ƒ€
 	int num;
-	num = rand() % 100;
+	num = rand() % 6 + 1;
 
 	//“ü—Í
 	printf("0:‹ô” 1:Šï”\n");
