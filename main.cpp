@@ -4,22 +4,28 @@
 #include <time.h>
 #include <functional>
 
-typedef void (*PFunc)(int num, int input);
+typedef void (*PFunc)(int);
 
-//’â~
-void Wait(PFunc p, int second, int num, int input) {
+//ƒR[ƒ‹ƒoƒbƒNŠÖ”
+void Judge(int input) {
 
-	Sleep(second);
+	//ƒ‰ƒ“ƒ_ƒ€
+	int num;
+	num = rand() % 6 + 1;
 
-	p(num, input);
+	if (num % 2 == input) {
+		printf("³‰ğ\n");
+	}
+	else {
+		printf("•s³‰ğ\n");
+	}
+
+	printf("o‚½–Ú‚Í'%d'‚Å‚µ‚½\n", num);
 
 }
 
 int main() {
 
-	//ƒ‰ƒ“ƒ_ƒ€
-	int num;
-	num = rand() % 100;
 
 	//“ü—Í
 	printf("0:‹ô” 1:Šï”\n");
@@ -28,18 +34,19 @@ int main() {
 
 	//ƒR[ƒ‹ƒoƒbƒNŠÖ”
 
-	auto p = [=](int num, int input) {
-		if (num % 2 == input) {
-			printf("³‰ğ\n");
-		}
-		else {
-			printf("•s³‰ğ\n");
-		}
+	PFunc p;
+	p = Judge;
+
+	std::function<void(PFunc, int)>setTimeout = [=](PFunc p, int second) {
+		
+		//3•b’â~Œã‚É”»’f
+		printf("”»’f’†\n");
+		Sleep(1000 * second);
+		p(input);
+
 	};
 
-	//3•b’â~Œã‚É”»’f
-	printf("”»’f’†\n");
-	Wait(p, 3000, num, input);
+	setTimeout(p,3);
 
 	return 0;
 }
