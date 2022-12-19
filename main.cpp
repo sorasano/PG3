@@ -6,18 +6,21 @@ int UsuallySalary(int n) {
 }
 
 //Žž‹‹‚ªƒAƒbƒv‚·‚é’À‹à‘ÌŒn
-int UpSalary(int n, int result) {
+int UpSalary(int n) {
 
-	if (n <= 1) {
-		return  result;
+	if (n == 1) {
+		//Å‰‚Ì1ŽžŠÔ‚Í100‰~
+		return 100;
+	}
+	else {
+		//2ŽžŠÔ–ÚˆÈ~‚Í[‘O‚Ì1ŽžŠÔ‚Å‚à‚ç‚Á‚½Žž‹‹*2-50]
+		return 2 * UpSalary(n - 1) - 50;
 	}
 
-	result = result * 2 - 50;
-
-	return UpSalary(n - 1, result);
 }
 
 int main() {
+
 
 	//˜J“­ŽžŠÔ
 	int n = 10;
@@ -33,11 +36,8 @@ int main() {
 		result = UsuallySalary(i);
 		printf("ˆê”Ê“I‚È’À‹à‘ÌŒn : %d", result);
 
-		///Ä‹A“I‚È’À‹à‘ÌŒn‚Ì‰Šú’l
-		result = 100;
-
 		//Ä‹A“I‚È’À‹à‘ÌŒn
-		result = UpSalary(i, result);
+		result = UpSalary(i);
 		printf("  Ä‹A“I‚È’À‹à‘ÌŒn : %d\n", result);
 	}
 
