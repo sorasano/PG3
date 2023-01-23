@@ -1,44 +1,50 @@
 #include <stdio.h>
-
-//通常の賃金体系
-int UsuallySalary(int n) {
-	return (n * 1072);
-}
-
-//時給がアップする賃金体系
-int UpSalary(int n) {
-
-	if (n == 1) {
-		//最初の1時間は100円
-		return 100;
-	}
-	else {
-		//2時間目以降は[前の1時間でもらった時給*2-50]
-		return 2 * UpSalary(n - 1) - 50;
-	}
-
-}
+#include <list>
+#include <iostream>
 
 int main() {
 
+	std::list<const char*> stations{
+		"Tokyo","Kanda","Akihabara","Okachimachi" ,"Ueno" ,
+		"Uguisudani" ,"Nippori" ,"Tabata" ,"Komagome" ,"Sugamo" ,
+		"Otsuka" ,"Ikebukuro" ,"Mejiro" ,"Takadanobaba" ,"Shin-Okubo" ,
+		"Shinjuku" ,"Yoyogi" ,"Harajuku" ,"Shibuya" ,"Ebisu" ,
+		"Meguro" ,"Gotanda" ,"Osaki" ,"Shinagawa" ,"Tamachi" ,
+		"Hamamatsucho" ,"Shimbashi" ,"Yurakucho" };
 
-	//労働時間
-	int n = 10;
-	//賃金答え
-	int result;
 
-	for (int i = 1; i <= n; i++) {
+	//1970
+	printf("\n1970\n");
+	for (auto itr = stations.begin(); itr != stations.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
 
-		//時間経過
-		printf("%d時間目 : ", i);
+	//1971 西田日暮里追加
+	for (auto itr = stations.begin(); itr != stations.end(); ++itr) {
+		if (*itr == "Tabata") {
+			itr = stations.insert(itr,"Nishi-Nippori");
+			++itr;
+		}
+	}
 
-		//通常の賃金体系
-		result = UsuallySalary(i);
-		printf("一般的な賃金体系 : %d", result);
+	//2019
+	printf("\n2019\n");
+	for (auto itr = stations.begin(); itr != stations.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
 
-		//再帰的な賃金体系
-		result = UpSalary(i);
-		printf("  再帰的な賃金体系 : %d\n", result);
+	//2020 高輪ゲートウェイ追加
+	for (auto itr = stations.begin(); itr != stations.end(); ++itr) {
+		if (*itr == "Tamachi") {
+			itr = stations.insert(itr, "Takanawa Gateway");
+			++itr;
+		}
+	}
+
+	//2022
+	printf("\n2022\n");
+	for (auto itr = stations.begin(); itr != stations.end(); ++itr) {
+		std::cout << *itr << "\n";
 	}
 
 	return 0;
