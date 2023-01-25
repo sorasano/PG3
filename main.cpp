@@ -1,19 +1,35 @@
 #include <stdio.h>
-#include "SceneManager.h"
+#include <iostream>
+#include "Enemy.h"
+
+using namespace std;
+
+int Enemy::isAlive;
 
 int main() {
 
-	SceneManager* sceneManager = SceneManager::GetInstance();
+	Enemy* enemy1 = new Enemy;
+	Enemy* enemy2 = new Enemy;
+	Enemy* enemy3 = new Enemy;
 
-	int scene = 0;
+	printf("enemyArive = %d\n", Enemy::isAlive);
+	printf("“|‚·“G‚ð“ü—Í");
+	
+	int input;
+	scanf_s("%d", &input);
 
-	while (true) {
-
-		sceneManager->ChangeScene(scene);
-
-		printf("%d\n", scene);
-
+	if (input == 1) {
+		delete enemy1;
 	}
+	else if(input == 2) {
+		delete enemy2;
+	}
+	else if (input == 3) {
+		delete enemy3;
+	}
+
+	printf("enemyArive = %d", Enemy::isAlive);
+
 
 	return 0;
 
