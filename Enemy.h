@@ -7,5 +7,7 @@ public:
 	Enemy() { isAlive = true; }
 	~Enemy() { isAlive = false; }
 
+	void Initialize();
+
 };
 

@@ -12,7 +12,11 @@ int main() {
 	Enemy* enemy2 = new Enemy;
 	Enemy* enemy3 = new Enemy;
 
-	printf("enemyArive = %d\n", Enemy::isAlive);
+	enemy1->Initialize();
+	enemy2->Initialize();
+	enemy3->Initialize();
+
+	printf("enemyAlive = %d\n", Enemy::isAlive);
 	printf("“|‚·“G‚ð“ü—Í");
 	
 	int input;
@@ -28,7 +32,7 @@ int main() {
 		delete enemy3;
 	}
 
-	printf("enemyArive = %d", Enemy::isAlive);
+	printf("enemyAlive = %d", Enemy::isAlive);
 
 
 	return 0;
