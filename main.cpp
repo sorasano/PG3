@@ -1,30 +1,20 @@
 #include <stdio.h>
-
-template <typename T>
-T Min(T a, T b) {
-
-	if (a > b) {
-		return static_cast<T>(a);
-	}
-	else if (b > a) {
-		return static_cast<T>(b);
-	}
-	
-	return 0;
-}
-
-template<>
-char Min<char>(char a, char b) {
-	return printf("”šˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ\n");;
-}
+#include "SceneManager.h"
 
 int main() {
 
-	printf("%d\n",Min<int>(114,514));
-	printf("%f\n", Min<float>(1.14f, 5.14f));
-	printf("%f\n", Min<double>(11.4, 51.4));
+	SceneManager* sceneManager = SceneManager::GetInstance();
 
-	printf("%c\n", Min<char>(1, 2));
+	int scene = 0;
+
+	while (true) {
+
+		sceneManager->ChangeScene(scene);
+
+		printf("%d\n", scene);
+
+	}
 
 	return 0;
+
 }
