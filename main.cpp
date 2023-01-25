@@ -1,23 +1,28 @@
 #include <stdio.h>
 #include <iostream>
-#include "Enemy.h"
+#include "Circle.h"
+#include "Rectangle.h"
+
 
 using namespace std;
 
 int main() {
 
-	Enemy* enemy = new Enemy;
-	enemy->Initialize();
+	//‰~‰Šú‰»
+	Circle* circle = new Circle;
+	circle->Initialize(5.0f);
 
-	while (true) {
+	//’ZŒ`‰Šú‰»
+	Rectangle* rectangle = new Rectangle;
+	rectangle->Initialize(2.0f, 4.0f);
 
-		printf("“G‚Ìó‘Ô‚ð“ü—Í  0 :‹ßÚ@1 :ŽËŒ‚@2:—£’E \n");
-		int input;
-		scanf_s("%d", &input);
+	//ŒvŽZ
+	circle->Size();
+	rectangle->Size();
 
-		enemy->Update(input);
-
-	}
+	//Œ‹‰Ê•`‰æ
+	circle->Draw();
+	rectangle->Draw();
 
 	return 0;
 
